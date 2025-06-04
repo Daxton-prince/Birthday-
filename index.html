@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday to Our Amazing Nurse!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+
+        
+        .header {
+            margin: 30px 0;
+            animation: fadeInDown 1s ease;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(to right, #e74c3c, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .nurse-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .nurse-image:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .message {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #e74c3c, #3498db);
+        }
+        
+        .message p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .gallery-item {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item:nth-child(1) { animation: slideInLeft 0.8s ease; }
+        .gallery-item:nth-child(2) { animation: slideInRight 0.8s ease 0.2s; }
+        .gallery-item:nth-child(3) { animation: slideInLeft 0.8s ease 0.4s; }
+        .gallery-item:nth-child(4) { animation: slideInRight 0.8s ease 0.6s; }
+        
+        .medical-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            animation: bounce 2s infinite;
+        }
+        
+        .icon img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .icon:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: #3498db;
+        }
+        
+        .icon:nth-child(1) { animation-delay: 0s; }
+        .icon:nth-child(2) { animation-delay: 0.2s; }
+        .icon:nth-child(3) { animation-delay: 0.4s; }
+        .icon:nth-child(4) { animation-delay: 0.6s; }
+        
+        .cake-container {
+            margin: 50px 0;
+            position: relative;
+            height: 50px;
+        }
+        
+        .cake {
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            left: 0%;
+            transform: translateX(-50%);
+            animation: pulse 2s infinite;
+        }
+        
+        .candle {
+            width: 20px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ffd700, #ff8c00);
+            position: absolute;
+            top: -40px;
+            margin-left: 70%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        
+        .flame {
+            width: 15px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ffff00, #ff4500);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: 30px;
+            margin-left: 80%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate;
+            box-shadow: 0 0 20px #ff8c00, 0 0 40px #ff4500;
+        }
+      
+
+        
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 2s ease;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nurse-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .message {
+                padding: 20px;
+            }
+            
+            .gallery-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+                .wish-button {
+            padding: 15px 30px;
+            background: linear-gradient(to right, #e74c3c, #3498db);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .wish-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .wish-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        .wish-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .wish-button:hover::before {
+            left: 100%;
+        }
+        
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="confetti" id="confetti"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Happy Birthday!</h1>
+            <h2>To Our Amazing Nurse Friend</h2>
+        </div>
+        
+        <div class="hero">
+            <img src="images/1747469110870.jpg" alt="Nurse" class="nurse-image">
+            
+            <div class="message">
+                <p>Dear Super Nurse,</p>
+                <p>On your special day, we want to thank you for your incredible dedication, compassion, and the healing touch you bring to everyone around you.</p>
+                <p>You're not just a nurse - you're a guardian angel in scrubs, a beacon of hope, and a true healthcare hero.</p>
+                <p>May your birthday be as wonderful as you make life for all your patients!</p>
+                <p>With love and gratitude,</p>
+                <p>Your Friends & Admirers</p>
+            </div>
+        </div>
+        
+        <div class="medical-icons">
+            <div class="icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913988.png" alt="Medical Icon">
+            </div>
+            <div class="icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913995.png" alt="Heart Icon">
+            </div>
+            <div class="icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913997.png" alt="Stethoscope Icon">
+            </div>
+            <div class="icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2785/2785433.png" alt="Syringe Icon">
+            </div>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/IMG-20240228-WA0000.jpg" alt="Nurse at work">
+            </div>
+            <div class="gallery-item">
+                <img src="images/1747469142670.jpg" alt="Nurse helping patient">
+            </div>
+            <div class="gallery-item">
+                <img src="images/IMG-20240227-WA0009.jpg" alt="Nurse with clipboard">
+            </div>
+            <div class="gallery-item">
+                <img src="images/1747469110870.jpg" alt="Nurse smiling">
+            </div>
+        </div>
+        
+        <div class="cake-container">
+            <div class="cake">
+                <img src="images/file_00000000848861f980ad2afa4df6bd07.png" height="280px" width="350px" alt="Birthday Cake">
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        <br>       <br>       <br>           <br>       <br>   <br><br><br><br><br>
+   
+       
+        <div class="footer">
+            <p>Thank you for being an inspiration to us all!</p>
+            <p>Wishing you health, happiness, and all the joy you bring to others!</p>
+        </div>
+    </div>
+    
+    <audio id="birthdayMusic" loop>
+        <source src="music/cocomelon_39_s_13th_birthday_cocomelon_nursery_rhymes_amp_kids_songs_mp3_28650.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Play birthday music
+            const music = document.getElementById('birthdayMusic');
+            music.volume = 0.3; // Lower volume
+            
+            // Try to play music (may be blocked by browser autoplay policies)
+            const playMusic = () => {
+                music.play().catch(e => {
+                    console.log("Autoplay was prevented. Please interact with the page to play music.");
+                });
+            };
+            
+            // Play after a short delay to allow user interaction if needed
+            setTimeout(playMusic, 1000);
+            
+        document.addEventListener('DOMContentLoaded', function() {
+            const wishButton = document.getElementById('wishButton');
+            const canvas = document.getElementById('confetti');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Confetti particles array
+            let particles = [];
+            
+            // Confetti colors
+            const colors = [
+                '#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5',
+                '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50',
+                '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800',
+                '#FF5722'
+            ];
+            
+            // Create confetti particles
+            function createParticles(x, y, count) {
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: x,
+                        y: y,
+                        size: Math.random() * 10 + 5,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        velocity: {
+                            x: (Math.random() - 0.5) * 10,
+                            y: (Math.random() - 0.5) * 10 - 5
+                        },
+                        rotation: Math.random() * 360,
+                        rotationSpeed: (Math.random() - 0.5) * 20,
+                        shape: Math.random() > 0.5 ? 'circle' : 'rect'
+                    });
+                }
+            }
+            
+            // Update and draw particles
+            function updateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    
+                    // Update position
+                    p.x += p.velocity.x;
+                    p.y += p.velocity.y;
+                    
+                    // Add gravity
+                    p.velocity.y += 0.1;
+                    
+                    // Update rotation
+                    p.rotation += p.rotationSpeed;
+                    
+                    // Draw particle
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    
+                    if (p.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    }
+                    
+                    ctx.restore();
+                    
+                    // Remove particles that are off screen
+                    if (p.y > canvas.height || p.x < 0 || p.x > canvas.width) {
+                        particles.splice(i, 1);
+                        i--;
+                    }
+                }
+                
+                if (particles.length > 0) {
+                    requestAnimationFrame(updateParticles);
+                }
+            }
+            
+            // Button click handler
+            wishButton.addEventListener('click', function() {
+                // Create lots of particles at button position
+                const rect = wishButton.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                
+                createParticles(x, y, 150);
+                updateParticles();
+                
+                // Play celebration sound
+                const cheer = new Audio('https://www.soundjay.com/human/sounds/applause-01.mp3');
+                cheer.volume = 0.5;
+                cheer.play().catch(e => console.log("Audio play prevented:", e));
+                
+                // Show message
+                setTimeout(() => {
+                    alert("✨ Your wish has been sent to the universe! ✨\nMay all your birthday dreams come true!");
+                }, 800);
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        });
+
+            
+            // Animate medical icons on scroll
+            const icons = document.querySelectorAll('.icon');
+            window.addEventListener('scroll', function() {
+                icons.forEach(icon => {
+                    const iconPosition = icon.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (iconPosition < screenPosition) {
+                        icon.style.animation = 'bounce 2s infinite';
+                    }
+                });
+            });
+        });
+   </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
